@@ -19,3 +19,19 @@ function modelLoaded()
 {
     console.log('model is loaded');
 }
+function check()
+{
+    img=document.getElementById("selfie_image");
+    classifier.classify(img,gotresult);
+}
+function gotresult(error,results)
+{
+    if(error){
+        console.error(error);
+    }
+    else{
+        console.log(results);
+        document.getElementById("person_name").innerHTML=results[0].label;
+        document.getElementById("object_acc").innerHTML=results[0].confidence.toFixed(3);
+}
+}
